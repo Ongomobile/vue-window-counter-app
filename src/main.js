@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const windowCounterApp = createApp(App)
+
+windowCounterApp.mount('#app')
