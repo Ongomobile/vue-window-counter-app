@@ -1,12 +1,143 @@
 <template>
-  <div class="add-counter-form-wrapper">
-    <h1>Add Form Here</h1>
+  <div class="add-counter-form--wrapper">
+    <h2 class="add-counter-heading">Add A Counter</h2>
+    <!-- prevent modifier prevents default -->
+    <form class="add-counter-form" @submit.prevent="addCounter">
+      <label for="type" class="add-counter-label" title="add"
+        >Window Type</label
+      >
+      <input
+        type="text"
+        id="type"
+        name="type"
+        class="add-counter-input"
+        placeholder="Add Window Type"
+        v-model="windowType"
+      />
+      <label for="location" class="add-counter-label">Window Location</label>
+      <input
+        type="text"
+        id="location"
+        name="location"
+        class="add-counter-input"
+        placeholder="Add Window Location"
+        v-model="windowLocation"
+      />
+
+      <label for="price" class="add-counter-label">Window Price</label>
+      <!-- Use .number modifier to cast input value as number -->
+      <input
+        type="text"
+        id="price"
+        name="price"
+        class="add-counter-input"
+        v-model.number="windowPrice"
+        placeholder="Add Window Price"
+      />
+      <input
+        type="submit"
+        class="add-counter-input submit"
+        value="Add Counter"
+        :disabled="isDisabled"
+      />
+      <div class="message">{{ errMessage || "" }}</div>
+    </form>
+    <div class="total-price-wrapper">
+      <p class="total-text">Total Price {{ grandTotal || 0.0 }}</p>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      counters: [],
+      grandTotal: 0.0,
+      windowPrice: "",
+      windowType: "",
+      windowLocation: "Inside & Out",
+      quantity: 0,
+      counterId: 0,
+      subtotal: 0,
+    };
+  },
+  methods: {
+    addCounter() {
+      let newCounter = {
+        id: this.counterId + 1,
+        windowType: this.windowType,
+        windowLocation: this.windowLocation,
+        windowPrice: this.windowPrice,
+        quantity: this.quantity,
+      };
+
+      if (this.windowPrice !== "" && this.windowType !== "") {
+        this.counters.push(newCounter);
+      }
+
+      this.windowPrice = "";
+      this.windowType = "";
+      this.windowLocation = "Inside & Out";
+      this.quantity = 0;
+
+      this.counterId = newCounter.id;
+      let countersArr = this.counters;
+      console.log({ countersArr });
+    },
+  },
+  computed: {
+    isDisabled: function () {
+      if (this.windowType !== "" && typeof this.windowPrice === "number") {
+        return false;
+      } else {
+        return true;
+      }
+    },
+  },
+};
 </script>
 
-<style>
+<style scoped>
+.add-counter-form--wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  margin: 0 auto 30px;
+}
+
+.add-counter-form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border: solid 1px #eee;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: var(--box-shadow);
+}
+
+.add-counter-heading {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.add-counter-input {
+  width: 100%;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #dcdcdc;
+  margin-bottom: 10px;
+}
+
+.add-counter-label {
+  color: #36454f;
+  margin-left: 5px;
+}
+
+.total-price-wrapper {
+  display: flex;
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+}
 </style>
