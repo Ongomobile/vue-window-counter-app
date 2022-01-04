@@ -1,18 +1,18 @@
 <template>
   <div class="container">
     <Header title="Window Counter" />
-    <AddCounterForm />
+    <AddCounters />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
-import AddCounterForm from "./components/AddCounterForm.vue";
+import AddCounters from "./components/AddCounters.vue";
 export default {
   name: "App",
   components: {
     Header,
-    AddCounterForm,
+    AddCounters,
   },
 };
 </script>

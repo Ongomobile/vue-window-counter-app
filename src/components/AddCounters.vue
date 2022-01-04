@@ -40,11 +40,19 @@
         value="Add Counter"
         :disabled="isDisabled"
       />
-      <div class="message">{{ errMessage || "" }}</div>
     </form>
     <div class="total-price-wrapper">
       <p class="total-text">Total Price {{ grandTotal || 0.0 }}</p>
     </div>
+  </div>
+  <div class="counters-wrapper">
+    <ul class="counters-list">
+      <li
+        class="counter-item"
+        v-for="(counter, index) in counters"
+        :key="index"
+      ></li>
+    </ul>
   </div>
 </template>
 
@@ -140,4 +148,21 @@ export default {
   box-shadow: var(--box-shadow);
   border-radius: 5px;
 }
+/* .counters-wrapper {
+  no styles yet
+  background-color: red;
+} */
+
+.counters-list {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  overflow: auto;
+}
+
+/* .counter-item{
+  no styles yet
+} */
 </style>
