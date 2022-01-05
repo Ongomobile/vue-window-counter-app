@@ -155,17 +155,16 @@ export default {
   box-shadow: var(--box-shadow);
   border-radius: 5px;
 }
-.counters-wrapper {
+/* .counters-wrapper {
   padding: 10px;
-}
+} */
 
 .counters-list {
-  padding: 0;
+  padding: 10px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   list-style: none;
   overflow: auto;
+  overflow-x: scroll;
 }
 
 @media screen and (max-width: 340px) {
