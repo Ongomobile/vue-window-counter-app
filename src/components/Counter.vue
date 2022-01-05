@@ -35,9 +35,6 @@
 </template>
 
 <script>
-const plusSound = require("@/assets/plus.mp3");
-const minusSound = require("@/assets/minus.mp3");
-
 export default {
   props: {
     counter: Object,
@@ -48,26 +45,16 @@ export default {
     },
     incrementQty(counter) {
       counter.quantity += 1;
-      // this.playPlusSound();
       this.getSubtotal(counter);
       console.log({ counter });
     },
     decrementQty(counter) {
       if (counter.quantity > 0) {
-        // this.playMinusSound();
         counter.quantity -= 1;
         this.getSubtotal(counter);
       } else {
         counter.quantity = 0;
       }
-    },
-    playPlusSound() {
-      let audio = new Audio(plusSound);
-      audio.play();
-    },
-    playMinusSound() {
-      let audio = new Audio(minusSound);
-      audio.play();
     },
     getSubtotal: function (counter) {
       let count = counter.quantity;
@@ -151,5 +138,10 @@ export default {
 .counter-qty-span {
   font-size: 20px;
   font-weight: 500;
+}
+@media screen and (max-width: 340px) {
+  .counter-wrapper {
+    width: 295px;
+  }
 }
 </style>

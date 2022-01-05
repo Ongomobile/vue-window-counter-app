@@ -155,18 +155,23 @@ export default {
   box-shadow: var(--box-shadow);
   border-radius: 5px;
 }
-/* .counters-wrapper {
-  no styles yet
-  background-color: red;
-} */
+.counters-wrapper {
+  padding: 10px;
+}
 
 .counters-list {
   padding: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
   list-style: none;
   overflow: auto;
+}
+
+@media screen and (max-width: 340px) {
+  .add-counter-form--wrapper {
+    max-width: 295px;
+  }
 }
 
 /* .counter-item{
