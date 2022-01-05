@@ -51,12 +51,15 @@
         class="counter-item"
         v-for="(counter, index) in counters"
         :key="index"
-      ></li>
+      >
+        <Counter :counter="counter" />
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
+import Counter from "./Counter.vue";
 export default {
   data() {
     return {
@@ -64,20 +67,24 @@ export default {
       grandTotal: 0.0,
       windowPrice: "",
       windowType: "",
-      windowLocation: "Inside & Out",
+      windowLocation: "",
       quantity: 0,
       counterId: 0,
       subtotal: 0,
     };
+  },
+  components: {
+    Counter,
   },
   methods: {
     addCounter() {
       let newCounter = {
         id: this.counterId + 1,
         windowType: this.windowType,
-        windowLocation: this.windowLocation,
+        windowLocation: this.windowLocation || "In & Out",
         windowPrice: this.windowPrice,
         quantity: this.quantity,
+        subtotal: this.subtotal,
       };
 
       if (this.windowPrice !== "" && this.windowType !== "") {
@@ -86,7 +93,7 @@ export default {
 
       this.windowPrice = "";
       this.windowType = "";
-      this.windowLocation = "Inside & Out";
+      this.windowLocation = "";
       this.quantity = 0;
 
       this.counterId = newCounter.id;

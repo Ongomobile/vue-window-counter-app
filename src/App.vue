@@ -48,6 +48,7 @@ body {
   5. Improve text rendering
 */
 body {
+  touch-action: manipulation;
   font-family: "Inter", sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
