@@ -28,6 +28,7 @@
       />
     </div>
     <div class="counter-subtotal-wraper">
+      <fa class="trash-icon" icon="trash-alt" @click="deleteCounter(counter)" />
       <label class="counter-subtotal-label">Subtotal</label>
       <span id="" class="counter-subtotal-display">{{ counter.subtotal }}</span>
     </div>
@@ -40,8 +41,8 @@ export default {
     counter: Object,
   },
   methods: {
-    deleteCounter() {
-      console.log("Delete Counter Called");
+    deleteCounter(counter) {
+      console.log("Delete Counter Called", counter);
     },
     incrementQty(counter) {
       counter.quantity += 1;
@@ -121,6 +122,10 @@ export default {
   transform: translate(6px 6px);
 }
 .counter-subtotal-wraper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   margin-top: 20px;
   text-align: center;
   font-size: 20px;
@@ -138,6 +143,10 @@ export default {
 .counter-qty-span {
   font-size: 20px;
   font-weight: 500;
+}
+
+.trash-icon {
+  color: red;
 }
 @media screen and (max-width: 340px) {
   .counter-wrapper {
