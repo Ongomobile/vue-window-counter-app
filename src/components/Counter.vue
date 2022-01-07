@@ -42,7 +42,8 @@ export default {
   },
   methods: {
     deleteCounter(counter) {
-      console.log("Delete Counter Called", counter);
+      this.counterIdToDelete = counter.id;
+      this.$emit("counter-to-delete", this.counterIdToDelete);
     },
     incrementQty(counter) {
       counter.quantity += 1;
@@ -131,6 +132,11 @@ export default {
   font-size: 20px;
   color: var(--colored-text);
 }
+
+.trash-icon {
+  color: red;
+}
+
 .counter-subtotal-label {
   margin-right: 10px;
 }
@@ -145,9 +151,6 @@ export default {
   font-weight: 500;
 }
 
-.trash-icon {
-  color: red;
-}
 @media screen and (max-width: 340px) {
   .counter-wrapper {
     width: 295px;
