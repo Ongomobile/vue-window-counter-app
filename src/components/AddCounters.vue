@@ -42,7 +42,7 @@
       />
     </form>
     <div class="total-price-wrapper">
-      <p class="total-text">Total Price {{ grandTotal || 0.0 }}</p>
+      <p class="total-text">Total Price {{ getTotals }}</p>
     </div>
   </div>
   <div class="counters-wrapper">
@@ -64,13 +64,12 @@ export default {
   data() {
     return {
       counters: [],
-      grandTotal: 0.0,
       windowPrice: "",
       windowType: "",
       windowLocation: "",
       quantity: 0,
       counterId: 0,
-      subtotal: 0,
+      subtotal: null,
     };
   },
   components: {
@@ -95,10 +94,9 @@ export default {
       this.windowType = "";
       this.windowLocation = "";
       this.quantity = 0;
+      this.subtotal = null;
 
       this.counterId = newCounter.id;
-      let countersArr = this.counters;
-      console.log({ countersArr });
     },
   },
   computed: {
@@ -108,6 +106,13 @@ export default {
       } else {
         return true;
       }
+    },
+    getTotals: function () {
+      const grandTotals = this.counters.reduce(
+        (prev, counter) => (prev += Number(counter.subtotal)),
+        0
+      );
+      return grandTotals.toFixed(2);
     },
   },
 };

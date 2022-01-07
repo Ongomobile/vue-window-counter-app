@@ -46,7 +46,6 @@ export default {
     incrementQty(counter) {
       counter.quantity += 1;
       this.getSubtotal(counter);
-      console.log({ counter });
     },
     decrementQty(counter) {
       if (counter.quantity > 0) {
