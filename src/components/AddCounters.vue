@@ -40,6 +40,7 @@
         value="Add Counter"
         :disabled="isDisabled"
       />
+      <SelectImage :images="windowImages" />
     </form>
     <div class="total-price-wrapper">
       <p class="total-text">Total Price {{ getTotals }}</p>
@@ -63,6 +64,8 @@
 
 <script>
 import Counter from "./Counter.vue";
+import SelectImage from "./SelectImage.vue";
+import windowData from "../../src/windowData.json";
 export default {
   data() {
     return {
@@ -73,10 +76,12 @@ export default {
       quantity: 0,
       counterId: 0,
       subtotal: null,
+      windowImages: windowData,
     };
   },
   components: {
     Counter,
+    SelectImage,
   },
   methods: {
     addCounter() {
