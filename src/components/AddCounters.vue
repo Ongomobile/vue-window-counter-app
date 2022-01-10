@@ -73,6 +73,9 @@ export default {
       windowPrice: "",
       windowType: "",
       windowLocation: "",
+      imageUrl:
+        "https://res.cloudinary.com/dnpje4e34/image/upload/v1641851671/Default-img_cntbq2.png",
+      alt: "image description",
       quantity: 0,
       counterId: 0,
       subtotal: null,
@@ -90,6 +93,7 @@ export default {
         windowType: this.windowType,
         windowLocation: this.windowLocation || "In & Out",
         windowPrice: this.windowPrice,
+        imageUrl: this.imageUrl,
         quantity: this.quantity,
         subtotal: this.subtotal,
       };

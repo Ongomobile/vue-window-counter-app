@@ -43,6 +43,7 @@ export default {
 .image-selector-headline {
   font-size: 18px;
   font-weight: 500;
+  color: #36454f;
 }
 
 .image-list {
@@ -65,6 +66,9 @@ export default {
   border: solid 1px #eee;
   box-shadow: var(--box-shadow);
   border-radius: 5px;
+}
+.window-name {
+  color: #36454f;
 }
 
 .selected-image {

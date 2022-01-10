@@ -5,27 +5,32 @@
       <p class="counter-type">{{ counter.windowLocation }}</p>
     </div>
     <div class="counter-controls-wrapper">
-      <input
-        type="image"
-        id="image"
-        class="counter-qty-btn"
-        alt="decrement quantity"
-        src="https://res.cloudinary.com/dnpje4e34/image/upload/v1641180924/Minus-btn_2x_qr2bqg.png"
-        @click="decrementQty(counter)"
-      />
-      <label for="qty">
-        <div class="counter-qty-wrapper">
-          <span class="counter-qty-span">{{ counter.quantity }}</span>
-        </div>
-      </label>
-      <input
-        type="image"
-        id="image"
-        class="counter-qty-btn"
-        alt="increment quantity"
-        src="https://res.cloudinary.com/dnpje4e34/image/upload/v1641180977/Plus-btn_2x_gtzatk.png"
-        @click="incrementQty(counter)"
-      />
+      <div class="counter-image-wrapper">
+        <img :src="counter.imageUrl" :alt="counter.alt" class="counter-image" />
+      </div>
+      <div class="counter-tally-wrapper">
+        <input
+          type="image"
+          id="image"
+          class="counter-qty-btn"
+          alt="decrement quantity"
+          src="https://res.cloudinary.com/dnpje4e34/image/upload/v1641180924/Minus-btn_2x_qr2bqg.png"
+          @click="decrementQty(counter)"
+        />
+        <label for="qty">
+          <div class="counter-qty-wrapper">
+            <span class="counter-qty-span">{{ counter.quantity }}</span>
+          </div>
+        </label>
+        <input
+          type="image"
+          id="image"
+          class="counter-qty-btn"
+          alt="increment quantity"
+          src="https://res.cloudinary.com/dnpje4e34/image/upload/v1641180977/Plus-btn_2x_gtzatk.png"
+          @click="incrementQty(counter)"
+        />
+      </div>
     </div>
     <div class="counter-subtotal-wraper">
       <fa class="trash-icon" icon="trash-alt" @click="deleteCounter(counter)" />
@@ -48,6 +53,7 @@ export default {
     incrementQty(counter) {
       counter.quantity += 1;
       this.getSubtotal(counter);
+      console.log(counter);
     },
     decrementQty(counter) {
       if (counter.quantity > 0) {
@@ -97,14 +103,20 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 60%;
+  width: 100%;
+}
+.counter-image-wrapper {
+  height: 60px;
+  width: 60px;
+}
+
+.counter-tally-wrapper {
+  display: flex;
 }
 .counter-qty-input {
   width: 45px;
   height: 45px;
   font-size: 12px;
-  margin-right: 20px;
-  margin-left: 20px;
 }
 .counter-qty-btn {
   touch-action: manipulation;
@@ -142,8 +154,8 @@ export default {
 }
 
 .counter-qty-wrapper {
-  padding: 5px;
-  border: solid 1px #eee;
+  padding: 10px 20px;
+  /* border: solid 1px #eee; */
 }
 
 .counter-qty-span {
