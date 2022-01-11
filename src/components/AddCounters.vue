@@ -20,7 +20,7 @@
         id="location"
         name="location"
         class="add-counter-input"
-        placeholder="Add Window Location"
+        placeholder="Add Location (default in & out)"
         v-model="windowLocation"
       />
 
@@ -34,13 +34,13 @@
         v-model.number="windowPrice"
         placeholder="Add Window Price"
       />
+      <SelectImage :images="windowImages" @on-select-image="selectImage" />
       <input
         type="submit"
         class="add-counter-input submit"
         value="Add Counter"
         :disabled="isDisabled"
       />
-      <SelectImage :images="windowImages" />
     </form>
     <div class="total-price-wrapper">
       <p class="total-text">Total Price {{ getTotals }}</p>
@@ -73,9 +73,8 @@ export default {
       windowPrice: "",
       windowType: "",
       windowLocation: "",
-      imageUrl:
-        "https://res.cloudinary.com/dnpje4e34/image/upload/v1641851671/Default-img_cntbq2.png",
-      alt: "image description",
+      imageUrl: "",
+      alt: "",
       quantity: 0,
       counterId: 0,
       subtotal: null,
@@ -105,9 +104,11 @@ export default {
       this.windowPrice = "";
       this.windowType = "";
       this.windowLocation = "";
+      this.imageUrl =
+        "https://res.cloudinary.com/dnpje4e34/image/upload/v1641851671/Default-img_cntbq2.png";
+      this.alt = "";
       this.quantity = 0;
       this.subtotal = null;
-
       this.counterId = newCounter.id;
     },
     deleteSelectedCounter(id) {
@@ -117,6 +118,10 @@ export default {
         })
         .indexOf(id);
       this.counters.splice(index, 1);
+    },
+    selectImage(imageData) {
+      this.imageUrl = imageData.url;
+      this.alt = imageData.alt;
     },
   },
   computed: {

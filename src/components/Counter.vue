@@ -108,6 +108,12 @@ export default {
 .counter-image-wrapper {
   height: 60px;
   width: 60px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.counter-image {
+  border-radius: 5px;
 }
 
 .counter-tally-wrapper {
