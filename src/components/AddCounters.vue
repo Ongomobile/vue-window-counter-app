@@ -41,6 +41,9 @@
         value="Add Counter"
         :disabled="isDisabled"
       />
+      <div class="error-message-wrapper" v-if="validated">
+        <p class="error-message">* type & price are required *</p>
+      </div>
     </form>
     <div class="total-price-wrapper">
       <p class="total-text">Total Price {{ getTotals }}</p>
@@ -79,6 +82,7 @@ export default {
       counterId: 0,
       subtotal: null,
       windowImages: windowData,
+      isValid: true,
     };
   },
   components: {
@@ -126,6 +130,13 @@ export default {
   },
   computed: {
     isDisabled: function () {
+      if (this.windowType !== "" && typeof this.windowPrice === "number") {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    validated: function () {
       if (this.windowType !== "" && typeof this.windowPrice === "number") {
         return false;
       } else {
@@ -185,9 +196,6 @@ export default {
   box-shadow: var(--box-shadow);
   border-radius: 5px;
 }
-/* .counters-wrapper {
-  padding: 10px;
-} */
 
 .counters-list {
   padding: 10px;
@@ -196,14 +204,15 @@ export default {
   overflow: auto;
   overflow-x: scroll;
 }
+.error-message {
+  text-transform: capitalize;
+  text-align: center;
+  color: red;
+}
 
 @media screen and (max-width: 340px) {
   .add-counter-form--wrapper {
     max-width: 295px;
   }
 }
-
-/* .counter-item{
-  no styles yet
-} */
 </style>
