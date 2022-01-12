@@ -36,6 +36,7 @@
       <fa class="trash-icon" icon="trash-alt" @click="deleteCounter(counter)" />
       <label class="counter-subtotal-label">Subtotal</label>
       <span id="" class="counter-subtotal-display">{{ counter.subtotal }}</span>
+      <p class="reset-btn" @click="resetSubtotal(counter)">reset</p>
     </div>
   </div>
 </template>
@@ -68,6 +69,10 @@ export default {
       let price = counter.windowPrice;
       let subTotal = count * price;
       counter.subtotal = subTotal.toFixed(2);
+    },
+    resetSubtotal: function (counter) {
+      counter.quantity = 0;
+      counter.subtotal = 0.0;
     },
   },
 };
@@ -167,6 +172,9 @@ export default {
 .counter-qty-span {
   font-size: 20px;
   font-weight: 500;
+}
+.reset-btn {
+  color: #7cc3e2;
 }
 
 @media screen and (max-width: 340px) {
