@@ -5,8 +5,8 @@
       <li class="image-list-item" v-for="(image, index) in images" :key="index">
         <div
           class="image-wrapper"
-          @click="onSelectImage(image)"
-          :class="{ selected: isSelected }"
+          @click="onSelectImage(image, index)"
+          :class="{ selected: isSelected === index }"
         >
           <p class="window-name">{{ image.name }}</p>
           <img :src="image.url" :alt="image.alt" class="selected-image" />
@@ -29,8 +29,11 @@ export default {
     };
   },
   methods: {
-    onSelectImage(imageData) {
-      // toggle isSelected to add selected class then reset set set back to false some how?
+    onSelectImage(imageData, index) {
+      if (imageData.id === index) {
+        this.isSelected = !this.isSelected;
+        this.isSelected = index;
+      }
       this.$emit("on-select-image", imageData);
     },
   },
@@ -65,8 +68,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 160px;
-  width: 160px;
+  height: 165px;
+  width: 165px;
   padding: 10px;
   border: solid 1px #eee;
   box-shadow: var(--box-shadow);
@@ -85,6 +88,6 @@ export default {
 }
 
 .selected {
-  border: solid 3px red;
+  border: solid 3px #7cc3e2;
 }
 </style>
