@@ -174,7 +174,7 @@ export default {
   font-weight: 500;
 }
 .reset-btn {
-  color: #7cc3e2;
+  color: #0e6d97;
 }
 
 @media screen and (max-width: 340px) {

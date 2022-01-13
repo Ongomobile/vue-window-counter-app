@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Header title="Window Counter" />
+    <Header title="Window Counter App" />
     <AddCounters />
   </div>
 </template>
@@ -95,6 +95,16 @@ h6 {
 :root {
   --colored-text: #36454f;
   --box-shadow: 0 2px 2px #ccc;
+}
+body {
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("https://www.longbeachwindowwashing.com/images/custom2.jpg");
+  background-position: 0px 0px, 50% 50%;
+  background-size: auto, cover;
 }
 
 .container {

@@ -105,7 +105,9 @@ export default {
         windowType: this.windowType,
         windowLocation: this.windowLocation || "In & Out",
         windowPrice: this.windowPrice,
-        imageUrl: this.imageUrl,
+        imageUrl:
+          this.imageUrl ||
+          "https://res.cloudinary.com/dnpje4e34/image/upload/v1641851671/Default-img_cntbq2.png",
         quantity: this.quantity,
         subtotal: this.subtotal,
       };
@@ -189,11 +191,13 @@ export default {
   border-radius: 5px;
   margin-bottom: 10px;
   box-shadow: var(--box-shadow);
+  background-color: #fff;
 }
 
 .add-counter-heading {
   margin-bottom: 5px;
   text-align: center;
+  color: #fff;
 }
 
 .add-counter-input {
@@ -214,6 +218,7 @@ export default {
   padding: 20px;
   box-shadow: var(--box-shadow);
   border-radius: 5px;
+  background-color: #fff;
 }
 
 .counters-list {
@@ -226,7 +231,7 @@ export default {
 .error-message {
   text-transform: capitalize;
   text-align: center;
-  color: red;
+  color: #ed0606;
 }
 
 @media screen and (max-width: 340px) {

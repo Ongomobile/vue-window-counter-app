@@ -21,5 +21,12 @@ export default {
 }
 .header {
   text-transform: capitalize;
+  color: #fff;
+}
+
+@media screen and (max-width: 340px) {
+  .header {
+    font-size: 30px;
+  }
 }
 </style>
