@@ -102,7 +102,7 @@ body {
       rgba(0, 0, 0, 0.4),
       rgba(0, 0, 0, 0.4)
     ),
-    url("https://www.longbeachwindowwashing.com/images/custom2.jpg");
+    url("https://res.cloudinary.com/dnpje4e34/image/upload/v1642115120/custom1_klhhnq.jpg");
   background-position: 0px 0px, 50% 50%;
   background-size: auto, cover;
 }
