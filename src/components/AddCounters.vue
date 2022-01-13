@@ -89,6 +89,15 @@ export default {
     Counter,
     SelectImage,
   },
+  mounted() {
+    if (localStorage.getItem("counters")) {
+      try {
+        this.counters = JSON.parse(localStorage.getItem("counters"));
+      } catch (e) {
+        localStorage.removeItem("counters");
+      }
+    }
+  },
   methods: {
     addCounter() {
       let newCounter = {
@@ -126,6 +135,16 @@ export default {
     selectImage(imageData) {
       this.imageUrl = imageData.url;
       this.alt = imageData.alt;
+    },
+  },
+  watch: {
+    counters: {
+      handler() {
+        console.log("counters array has changed");
+        let parsed = JSON.stringify(this.counters);
+        localStorage.setItem("counters", parsed);
+      },
+      deep: true,
     },
   },
   computed: {

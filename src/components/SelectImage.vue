@@ -34,7 +34,6 @@ export default {
         this.isSelected = !this.isSelected;
         this.isSelected = index;
       }
-      this.selected = false;
       this.$emit("on-select-image", imageData);
     },
   },
