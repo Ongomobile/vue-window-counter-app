@@ -78,9 +78,9 @@
   },
   {
     "id": 11,
-    "url": "https://res.cloudinary.com/dnpje4e34/image/upload/v1641845079/razorBlade125x125_cupci5.png",
-    "name": "Construction",
-    "alt": "Construction",
+    "url": "https://res.cloudinary.com/dnpje4e34/image/upload/v1642190642/Storm-window_m2oxyp.png",
+    "name": "Storm Window",
+    "alt": "Storm Window",
     "selected": false
   },
   {
@@ -127,6 +127,13 @@
   },
   {
     "id": 18,
+    "url": "https://res.cloudinary.com/dnpje4e34/image/upload/v1641845079/razorBlade125x125_cupci5.png",
+    "name": "Construction",
+    "alt": "Construction",
+    "selected": false
+  },
+  {
+    "id": 19,
     "url": "https://res.cloudinary.com/dnpje4e34/image/upload/v1641851671/Default-img_cntbq2.png",
     "name": "Default Image",
     "alt": "Default Image",
